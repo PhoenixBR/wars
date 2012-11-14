@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+
+{% block conteudo %}
+<h1> Carteira: {{profile.carteira}} </h1>
+
+<div class="container">
+   <p>Armaduras:</p>
+   {% for armadura in armaduras %}
+       <img src="{{ armadura.imagem.url }}" />
+       {{ armadura.nome }}
+ 
+       {% if armadura in profile.armaduras.all %}
+           <a href="vender/armadura/{{ armadura.pk }}">vender por ${{ armadura.venda }}</a>
+       {% else %}
+           <a href="comprar/armadura/{{ armadura.pk }}">comprar por ${{ armadura.compra }}</a>
+       {% endif %}
+       <br />
+ 
+   {%  endfor %}
+ 
+   <hr />
+ 
+   <p>Armas:</p>
+   {% for arma in armas %}
+       <img src="{{ arma.imagem.url }}" />
+       {{ arma.nome }}
+ 
+       {% if arma in profile.armas.all %}
+           <a href="vender/arma/{{ arma.pk }}">vender por ${{ arma.venda }}</a>
+       {% else %}
+           <a href="comprar/arma/{{ arma.pk }}">comprar por ${{ arma.compra }}</a>
+       {% endif %}
+       <br />>
+   {%  endfor %}
+ 
+</div> <!-- /container -->
+{% endblock %}

@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+
+{% block conteudo %}
+<div class="container">
+    <p>
+        Informações do usuário:
+        Nível {{  player.nivel }}
+        |
+        Energia {{  player.energia_atual }}/{{ player.energia }}
+        |
+        Raiva {{ player.raiva_atual }}/{{ player.raiva }}
+        |
+        HP: {{ player.hp }}/{{ vida }}
+        |
+        Carteira {{ player.carteira }}
+    </p>
+ 
+    <!--lista de alvos-->
+    Você atacou <b>{{ alvo.user.username }}</b><br />
+    Resultado da luta: {% if vitoria %}<b>VITÓRIA!</b>{% else %}<b>DERROTA!</b>{% endif %}<br />
+    Log: {{ log }} <br />
+    Seu Hp inicial: <b>{{ jogador_hp }}</b>, Hp final: <b>{{ jogador_hp_final }}</b><br />
+    Hp inicial de {{ alvo.user.username }}: <b>{{ alvo_hp }}</b>, Hp final: <b>{{ alvo_hp_final }}</b><br />
+     
+    {% if vitoria %}
+        Você recebeu: <b>{{ grana }}</b><br />
+    {% else %}
+        Você perdeu: <b>{{ grana }}</b><br />
+    {% endif %}
+ 
+</div> <!-- /container -->
+{% endblock %}

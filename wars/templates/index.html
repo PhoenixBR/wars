@@ -1,0 +1,54 @@
+{% extends "base.html" %}
+
+
+{% block conteudo %}
+
+<a href="/logout/">Logout</a>
+<a href="/crimes/">Crimes</a>
+<a href="/loja/">Loja</a>
+<a href="/luta/">Luta</a>
+
+<h1> Jogador: {{user.username}} </h1>
+
+<p> Carteira: {{ profile.carteira}} </p>
+<p> Banco: {{ profile.banco}} </p>
+
+<p> Pontos para distribuir: {{profile.pontos}}</p>
+<p> Ataque: {{ profile.ataque}} {% if profile.pontos > 0 %} <a href="AdicionarStatus/ataque">+1 Ataque</a> {% endif %}</p> 
+<p> Defesa: {{ profile.defesa}} {% if profile.pontos > 0 %} <a href="AdicionarStatus/defesa">+1 Defesa</a> {% endif %}</p>
+<p> Vida: {{ profile.vida}} {% if profile.pontos > 0 %} <a href="AdicionarStatus/vida">+1 Vida</a> {% endif %}</p>
+<p> Energia: {{ profile.energia}} {% if profile.pontos > 0 %} <a href="AdicionarStatus/energia">+1 Energia</a> {% endif %}</p>
+<p> Raiva: {{ profile.raiva}} {% if profile.pontos > 0 %} <a href="AdicionarStatus/raiva">+1 Raiva</a> {% endif %}</p>
+
+<p> HP: {{ profile.hp}} </p>
+<p> Energia atual: {{ profile.energia_atual}} </p>
+<p> Raiva atual: {{ profile.raiva_atual}} </p>
+
+<p> Nivel: {{ profile.nivel}} </p>
+<p> XP: {{ profile.experiencia}} </p>
+
+<ul>
+	<li>Armas</li>
+	{% for arma in profile.armas.all %}
+		<p><a href="/equipar/arma/{{arma.id}}"><img src="{{arma.imagem.url}}"/></a>	
+		{% if profile.arma_ativa %}
+			{% if arma == profile.arma_ativa %}
+				<equipado>Equipado</equipado>
+			{% endif %}
+		{% endif %}
+		</p>
+	{%  endfor %}
+
+	<li>Armaduras</li>
+	{% for armadura in profile.armaduras.all %}
+		<p><a href="/equipar/armadura/{{armadura.id}}"><img src="{{armadura.imagem.url}}"/></a>
+		{% if profile.armadura_ativa %}
+			{% if armadura == profile.armadura_ativa %}
+				<equipado>Equipado</equipado>
+			{% endif %}
+		{% endif %}
+		</p>
+	{%  endfor %}
+</ul>
+
+{% endblock %}

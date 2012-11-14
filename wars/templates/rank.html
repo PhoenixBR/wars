@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+
+{% block conteudo %}
+
+{% for jogador in rank %}
+	<p> {{jogador.user.username}}: Nível {{jogador.nivel}} <p>
+
+{% endfor %}
+
+{% endblock %}
