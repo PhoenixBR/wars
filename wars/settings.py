@@ -1,6 +1,7 @@
 import os.path
 ROOTDIR = os.path.dirname(__file__)
 
+import dj_database_url
 
 # Django settings for wars project.
 
@@ -162,5 +163,7 @@ LOGGING = {
         },
     }
 }
+
+DATABASES['default'] =  dj_database_url.config()
 
 

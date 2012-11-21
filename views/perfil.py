@@ -10,7 +10,7 @@ from itens.models import Arma, Armadura #importa os modelos de armas e armaduras
 def index(request):
     user = request.user
     user_profile = user.get_profile()
-    return render_to_response("index.html", {"user":user, "profile": user_profile})
+    return render_to_response("index.html", {"user": user, "profile": user_profile})
  
 @login_required
 def equipar_arma(request, nr_item):
