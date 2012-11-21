@@ -1,5 +1,7 @@
 Django==1.4.2
+PIL==1.1.7
 argparse==1.2.1
 dj-database-url==0.2.1
 psycopg2==2.4.5
+pytz==2012h
 wsgiref==0.1.2
